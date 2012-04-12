@@ -1,4 +1,9 @@
 venv
 
 *.py[co]
+
+# For Pip
 pip-log.txt
+
+# For Sphinx
+_build
