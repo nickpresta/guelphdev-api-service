@@ -8,6 +8,7 @@ django-tastypie==0.9.11
 docutils==0.8.1
 lxml==2.3.4
 mimeparse==0.1.3
+psycopg2==2.4.5
 python-dateutil==1.5
 -e git+https://github.com/NickPresta/pyuoguelph@d853c1ad0923342376d554b1c9f63f7fd4bccca9#egg=pyuoguelph-dev
 uuid==1.30
