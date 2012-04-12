@@ -1,1 +1,4 @@
 venv
+
+*.py[co]
+pip-log.txt
