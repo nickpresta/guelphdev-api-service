@@ -1,7 +1,8 @@
 from django.conf.urls import patterns, include, url
 
 from tastypie.api import Api
-from api.api import CourseResource
+from api.apis.course import CourseResource
+from api.apis.news import NewsResource
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -9,6 +10,7 @@ from api.api import CourseResource
 
 v1_api = Api(api_name='v1')
 v1_api.register(CourseResource())
+v1_api.register(NewsResource())
 
 urlpatterns = patterns('',
     url(r'^api/', include(v1_api.urls)),

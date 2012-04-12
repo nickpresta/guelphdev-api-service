@@ -153,3 +153,6 @@ LOGGING = {
         },
     }
 }
+
+# Custom Settings Here
+NEWS_FEED_URL = 'http://feeds.feedburner.com/uoguelph'

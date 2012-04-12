@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from tastypie import fields
 from tastypie.bundle import Bundle
 from tastypie.exceptions import ImmediateHttpResponse
@@ -25,25 +27,25 @@ class CourseObject(object):
 
 class CourseResource(Resource):
     course_code = fields.CharField(attribute='course_code',
-            null=True, readonly=True, unique=True)
+            readonly=True, unique=True)
     course_number = fields.CharField(attribute='course_number',
-            null=True, readonly=True, unique=True)
+            readonly=True, unique=True)
     course_department = fields.CharField(attribute='course_department',
-            null=True, readonly=True, unique=True)
+            readonly=True, unique=True)
     course_title = fields.CharField(attribute='course_title',
-            null=True, readonly=True, unique=True)
+            readonly=True, unique=True)
     course_semesters = fields.CharField(attribute='course_semesters',
-            null=True, readonly=True, unique=True)
+            readonly=True, unique=True)
     course_credit = fields.CharField(attribute='course_credit',
-            null=True, readonly=True, unique=True)
+            readonly=True, unique=True)
     course_description = fields.CharField(attribute='course_description',
-            null=True, readonly=True, unique=True)
+            readonly=True, unique=True)
     course_restrictions = fields.CharField(attribute='course_restrictions',
-            null=True, readonly=True, unique=True)
+            readonly=True, unique=True)
     course_prereqs = fields.CharField(attribute='course_prereqs',
-            null=True, readonly=True, unique=True)
+            readonly=True, unique=True)
     course_uri = fields.CharField(attribute='course_uri',
-            null=True, readonly=True, unique=True)
+            readonly=True, unique=True)
 
     class Meta:
         resource_name = 'course'
@@ -71,8 +73,9 @@ class CourseResource(Resource):
         return self._build_reverse_url("api_dispatch_detail", kwargs=kwargs)
 
     def obj_get(self, request=None, **kwargs):
-        year = request.GET.get('year', '2011')
-        calendar = request.GET.get('calendar', 'undergraduate')
+        year = request.GET.get('year', str(datetime.now().year))
+        calendar = request.GET.get('calendar',
+                self._client().UNDERGRADUATE_CALENDAR)
 
         try:
             course = self._client().get_course(year, kwargs['pk'], calendar)
