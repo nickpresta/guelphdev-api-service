@@ -244,10 +244,3 @@ texinfo_documents = [
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'http://docs.python.org/': None}
-
-sys.path.append(os.path.abspath("../"))
-
-from django.core.management import setup_environ
-from guelphapi import settings
-
-setup_environ(settings)

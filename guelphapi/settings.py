@@ -11,7 +11,7 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': '',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
@@ -119,9 +119,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'guelphapi.api',
     'tastypie',
 )
 
@@ -156,3 +157,37 @@ LOGGING = {
 
 # Custom Settings Here
 NEWS_FEED_URL = 'http://feeds.feedburner.com/uoguelph'
+
+# To fetch course information
+# COURSE_PROGRAM_ROOT_URL % COURSE_PROGRAM_CODES[i] = Full URL, where i is the program
+COURSE_PROGRAM_ROOT_URL = 'http://www.uoguelph.ca/registrar/calendars/undergraduate/current/c12/c12%s.shtml'
+COURSE_PROGRAM_CODES = (
+    'acct', 'agr', 'anat', 'ansc', 'anth', 'arth', 'asci',
+    'bioc', 'biol', 'biom', 'bot', 'bus',
+    'chem', 'chin', 'clas', 'cis', 'coop', 'crop',
+    'econ', 'edrd', 'engg', 'engl', 'envb', 'envm', 'envs', 'eqn', 'euro',
+    'frhd', 'food', 'fare', 'fren',
+    'geog', 'germ', 'grek',
+    'hisp', 'hist', 'hk', 'hort', 'hrob', 'htm', 'humn',
+    'ips', 'iss', 'univ', 'ibio', 'idev', 'ital',
+    'larc', 'lat', 'ling',
+    'mgmt', 'cost', 'math', 'mcb', 'micr', 'mbg', 'musc',
+    'nano', 'neur', 'nrs', 'nutr',
+    'oagr',
+    'path', 'phrm', 'phil', 'port', 'phys', 'psgy', 'pbio', 'pols', 'popm', 'psyc',
+    'real',
+    'soc', 'soan', 'stat', 'sart',
+    'thst', 'tox',
+    'vetm',
+    'wmst',
+    'zoo',
+)
+
+
+
+# Try to import our local settings (for database, etc)
+# DO NOT remove this
+try:
+    from local_settings import *
+except ImportError:
+    pass
