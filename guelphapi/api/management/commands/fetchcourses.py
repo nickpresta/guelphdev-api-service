@@ -23,12 +23,17 @@ class Command(BaseCommand):
             courses_source = soup.find_all('div', {'class': 'course'})
             for course_s in courses_source:
                 c = CourseParser.parse_source(str(course_s))
-                course, created = Course.objects.get_or_create(
-                        code=c['course_code'], number=c['course_number'],
-                        department=c['course_department'], title=c['course_title'],
-                        semesters=c['course_semesters'], credit=c['course_credit'],
-                        description=c['course_description'], restrictions=c['course_restrictions'],
-                        prerequisites=c['course_prereqs'])
+                course, created = Course.objects.get_or_create(code=c['course_code'],
+                    defaults={
+                        'number': c['course_number'],
+                        'department': c['course_department'],
+                        'title': c['course_title'],
+                        'semesters': c['course_semesters'],
+                        'credit': c['course_credit'],
+                        'description': c['course_description'],
+                        'restrictions': c['course_restrictions'],
+                        'prerequisites': c['course_prereqs']
+                    })
                 if created:
                     num_created += 1
                 else:

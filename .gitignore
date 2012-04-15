@@ -1,6 +1,7 @@
 venv
 
 *.py[co]
+local_settings.py
 
 # For Pip
 pip-log.txt
