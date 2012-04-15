@@ -17,7 +17,7 @@ class Command(BaseCommand):
         num_created = 0
         num_updated = 0
         for code in settings.COURSE_PROGRAM_CODES:
-            source = CourseParser._fetch_source(
+            source = CourseParser.fetch_source(
                     settings.COURSE_PROGRAM_ROOT_URL % code)
             soup = BeautifulSoup(source)
             courses_source = soup.find_all('div', {'class': 'course'})
