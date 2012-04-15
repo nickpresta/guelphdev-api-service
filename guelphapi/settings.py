@@ -158,6 +158,7 @@ LOGGING = {
 
 # Custom Settings Here
 NEWS_FEED_URL = 'http://feeds.feedburner.com/uoguelph'
+EVENTS_FEED_URL = 'http://www.uoguelph.ca/studentaffairs/reg/rssfeed.cfm'
 
 # To fetch course information
 # COURSE_PROGRAM_ROOT_URL % COURSE_PROGRAM_CODES[i] = Full URL, where i is the program

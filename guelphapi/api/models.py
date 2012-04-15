@@ -35,3 +35,26 @@ class Course(models.Model):
 
     def __unicode__(self):
         return "%s - %s" % (self.code, self.title)
+
+# Incredibly unpredictable data
+# shove it all into a textfield
+class Event(models.Model):
+    title = models.TextField()
+    organization = models.TextField()
+    description = models.TextField()
+    eligibility = models.TextField()
+    event_format = models.TextField()
+    instructors = models.TextField()
+    topic = models.TextField()
+    contact = models.TextField()
+    location = models.TextField()
+    maximum_attendance = models.TextField()
+    time = models.TextField()
+    date = models.TextField()
+    qualifies_as = models.TextField()
+    more_information = models.TextField()
+    advanced_registration = models.TextField()
+    link = models.URLField()
+
+    def __unicode__(self):
+        return "%s - %s %s" % (self.title, self.date, self.time)
