@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'guelphapi.api',
     'tastypie',
+    'gunicorn',
 )
 
 # A sample logging configuration. The only tangible logging
