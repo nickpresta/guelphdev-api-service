@@ -8,3 +8,6 @@ pip-log.txt
 
 # For Sphinx
 _build
+
+# For Celery
+celerybeat-schedule
