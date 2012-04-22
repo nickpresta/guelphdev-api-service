@@ -22,15 +22,18 @@ See requirements.txt for more details.
 
 ### To Install
 
+#### Set up your environment
+
 * Install easy\_install: `sudo apt-get install python-setuptools python-dev build-essential`
 * Install virtualenv: `sudo easy_install -U virtualenv`
 * Create a virtual environment in our source directory: `virtualenv --distribute venv`
-* Get into your virtual environment: `source nenv/bin/active`
-* To leave this virtualenv: `deactivate`
-* Install packages: `pip install -r requirements.txt`
-* Your packages have been installed. Verify with yolk: `yolk -l`
+* Get into your virtual environment: `source venv/bin/active`
 
-**NOTE:** You may need to install `libxml2-dev` and `libxslt-dev` in your package manager to resolve lxml dependencies.
+#### Install packages
+
+* Install dependencies: `sudo apt-get install postgresql postgresql-server-dev-9.1 libxml2-dev libxslt-dev libyaml-dev python-dev`
+* Install Python packages: `pip install -r requirements.txt`
+* Your packages have been installed. Verify with yolk: `yolk -l`
 
 
   [1]: http://uoguelph.ca "University of Guelph"
