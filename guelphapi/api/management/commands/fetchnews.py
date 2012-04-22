@@ -64,7 +64,13 @@ class Command(BaseCommand):
         num_updated = 0
         for entry in parser.entries:
             d = _build(entry)
-            news, created = News.objects.get_or_create(**d)
+            news, created = News.objects.get_or_create(link=d['link'],
+                defaults={
+                    'title': d['title'],
+                    'datetime_published': d['datetime_published'],
+                    'content': d['content'],
+                    'category': d['category']
+                })
             if created:
                 num_created += 1
             else:
