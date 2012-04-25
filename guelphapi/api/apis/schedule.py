@@ -15,7 +15,7 @@ class ScheduleObject(ResourceObject):
     pass
 
 class ScheduleResource(LoggingResource):
-    schedule = fields.CharField(attribute='schedule')
+    schedule = fields.ListField(attribute='schedule')
     user = fields.CharField(attribute='user')
 
     class Meta:
