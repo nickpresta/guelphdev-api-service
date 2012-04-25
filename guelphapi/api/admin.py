@@ -25,4 +25,4 @@ admin.site.register(Course, CourseAdmin)
 class EventAdmin(admin.ModelAdmin):
     list_display = ('title', 'time', 'date')
     search_fields = ('title', 'location', 'organization', 'description')
-admin.site.register(Course, EventAdmin)
+admin.site.register(Event, EventAdmin)

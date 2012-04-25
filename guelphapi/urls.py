@@ -6,6 +6,7 @@ from api.apis.course import CourseResource
 from api.apis.news import NewsResource
 from api.apis.event import EventResource
 from api.apis.mealplan import MealPlanResource
+from api.apis.schedule import ScheduleResource
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -16,6 +17,7 @@ v1_api.register(CourseResource())
 v1_api.register(NewsResource())
 v1_api.register(EventResource())
 v1_api.register(MealPlanResource())
+v1_api.register(ScheduleResource())
 
 urlpatterns = patterns('',
     url(r'^api/', include(v1_api.urls)),

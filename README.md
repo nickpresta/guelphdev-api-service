@@ -31,7 +31,7 @@ See requirements.txt for more details.
 
 #### Install packages
 
-* Install dependencies: `sudo apt-get install postgresql postgresql-server-dev-9.1 libxml2-dev libxslt-dev libyaml-dev python-dev`
+* Install dependencies: `sudo apt-get install postgresql postgresql-server-dev-9.1 libxml2-dev libxslt-dev libyaml-dev python-dev libldap2-dev libsasl2-dev`
 * Install Python packages: `pip install -r requirements.txt`
 * Your packages have been installed. Verify with yolk: `yolk -l`
 
