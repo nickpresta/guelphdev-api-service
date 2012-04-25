@@ -14,6 +14,7 @@ mimeparse==0.1.3
 git+git://github.com/winhamwr/mixpanel-celery.git#egg=mixpanel-celery
 psycopg2==2.4.5
 python-dateutil==1.5
+python-ldap==2.4.9
 git+https://github.com/NickPresta/pyuoguelph
 uuid==1.30
 wsgiref==0.1.2
