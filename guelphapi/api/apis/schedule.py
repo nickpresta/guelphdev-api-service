@@ -1,8 +1,10 @@
-from subprocess import check_output
+from subprocess import Popen, PIPE, STDOUT
 
 from guelphapi.api.apis.resource import LoggingResource
 from guelphapi.api.apis.resource_object import ResourceObject
 from guelphapi.api.apis.authentication import BasicHttpApiKeyAuthentication
+
+from django.conf import settings
 
 from tastypie import fields
 from tastypie.bundle import Bundle
@@ -45,7 +47,17 @@ class ScheduleResource(LoggingResource):
         if kwargs['pk'] != request.user.username:
             raise ImmediateHttpResponse(HttpUnauthorized())
 
-        output = '1|ANTH*1150*01|2012/01/09|2012/04/20|LEC|Tues, Thur |10:00AM - 11:20AM|ROZH, Room 101,1|ANTH*1150*01|2012/04/19|2012/04/19|EXAM|Thur |07:00PM - 09:00PM|ROZH, Room 101,2|PHIL*2140*DE|2012/01/09|2012/04/20|Distance Education|Days TBA|Times TBA|Room TBA,2|PHIL*2140*DE|2012/04/18|2012/04/18|EXAM|Wed |11:30AM - 01:30PM|MACN, Room 113'
+        # Call the script, pass in username and password on via STDIN
+        # so username/password doesn't show up in the process table
+        # when passing using CLI arguments
+        process = Popen([
+            settings.CASPERJS_BIN, settings.FETCH_SCHEDULE_SCRIPT],
+            stdout=PIPE, stdin=PIPE, stderr=STDOUT)
+        output = process.communicate(input="%s\n%s" % (
+            request.user.username, request.user.password))[0].strip()
+
+        # hardcoded output
+        # output = '1|ANTH*1150*01|2012/01/09|2012/04/20|LEC|Tues, Thur |10:00AM - 11:20AM|ROZH, Room 101,1|ANTH*1150*01|2012/04/19|2012/04/19|EXAM|Thur |07:00PM - 09:00PM|ROZH, Room 101,2|PHIL*2140*DE|2012/01/09|2012/04/20|Distance Education|Days TBA|Times TBA|Room TBA,2|PHIL*2140*DE|2012/04/18|2012/04/18|EXAM|Wed |11:30AM - 01:30PM|MACN, Room 113'
 
         parser = scheduleparser.ScheduleParser()
         schedule = parser.get_schedule(output)

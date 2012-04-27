@@ -63,7 +63,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, '../static_root')
+STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../static_root'))
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -193,12 +193,20 @@ COURSE_PROGRAM_CODES = (
     'zoo',
 )
 
+# Mixpanel settings
 BROKER_BACKEND = 'django'
 CELERY_ALWAYS_EAGER = True
 MIXPANEL_API_TOKEN = '29a29954d34fd707f1118f09b6b64a8f'
 
 import djcelery
 djcelery.setup_loader()
+
+# CasperJS settings
+PHANTOMJS_BIN = os.path.abspath(os.path.join(BASE_DIR, '../utils/phantomjs/bin/phantomjs'))
+# Need this for casperjs binary
+os.putenv('PHANTOMJS_EXECUTABLE', PHANTOMJS_BIN)
+CASPERJS_BIN = os.path.abspath(os.path.join(BASE_DIR, '../utils/casperjs/bin/casperjs'))
+FETCH_SCHEDULE_SCRIPT = os.path.abspath(os.path.join(BASE_DIR, '../utils/scripts/schedule.js'))
 
 # Try to import our local settings (for database, etc)
 # DO NOT remove this
