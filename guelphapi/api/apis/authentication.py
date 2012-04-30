@@ -9,6 +9,12 @@ from tastypie.authentication import BasicAuthentication
 from tastypie.http import HttpUnauthorized
 from tastypie.models import ApiKey
 
+logger = logging.getLogger(__name__)
+# Equivalent of "tls_checkpeer no"
+# Since school uses self-signed cert
+# We only use SSL as transport encryption anyways
+ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, ldap.OPT_X_TLS_ALLOW)
+
 class BasicHttpApiKeyAuthentication(BasicAuthentication):
     """This is a mashup of Basic HTTP Auth, and ApiKey authentication.
 

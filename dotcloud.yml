@@ -1,6 +1,10 @@
 www:
   type: python
   systempackages:
+    - libxml2-dev
+    - libxslt-dev
+    - libyaml-dev
+    - python-dev
     - libldap2-dev
     - libsasl2-dev
 db:
