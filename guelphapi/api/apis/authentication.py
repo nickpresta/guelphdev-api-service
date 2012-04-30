@@ -9,6 +9,8 @@ from tastypie.authentication import BasicAuthentication
 from tastypie.http import HttpUnauthorized
 from tastypie.models import ApiKey
 
+logger = logging.getLogger(__name__)
+
 class BasicHttpApiKeyAuthentication(BasicAuthentication):
     """This is a mashup of Basic HTTP Auth, and ApiKey authentication.
 
