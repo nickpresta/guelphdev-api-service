@@ -253,6 +253,9 @@ os.putenv('PHANTOMJS_EXECUTABLE', PHANTOMJS_BIN)
 CASPERJS_BIN = os.path.abspath(os.path.join(BASE_DIR, '../utils/casperjs/bin/casperjs'))
 FETCH_SCHEDULE_SCRIPT = os.path.abspath(os.path.join(BASE_DIR, '../utils/scripts/schedule.js'))
 
+# Ldap settings
+LDAP_SERVER = 'ldaps://directory.uoguelph.ca'
+
 # Try to import our local settings (for database, etc)
 # DO NOT remove this
 try:

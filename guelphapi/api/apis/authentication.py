@@ -1,6 +1,8 @@
 import base64
 import ldap
+import logging
 
+from django.conf import settings
 from django.contrib.auth.models import User
 
 from tastypie.authentication import BasicAuthentication
@@ -38,45 +40,54 @@ class BasicHttpApiKeyAuthentication(BasicAuthentication):
         try:
             username, api_key = self.extract_credentials(request)
         except ValueError:
+            logger.info('Could not get username or API key from database.')
             return HttpUnauthorized()
 
         if not username or not api_key:
+            logger.info('Username or API key are empty.')
             return HttpUnauthorized()
 
         try:
             user = User.objects.get(username=username)
         except (User.DoesNotExist, User.MultipleObjectsReturned):
+            logger.info('User does not exist/multiple users in database.')
             return HttpUnauthorized()
 
         if not self.get_key(user, api_key):
+            logger.info('No valid API key for user %s.' % user)
             return HttpUnauthorized()
 
         # Do our Http Basic Auth check now
         # Check with remote LDAP server, too
 
         if not request.META.get('HTTP_AUTHORIZATION'):
+            logger.info('No HTTP_AUTHORIZATION header in request.')
             return self._unauthorized()
 
         try:
             auth_type, data = request.META.get('HTTP_AUTHORIZATION', '').split()
         except ValueError:
+            logger.info('Could not extract data from HTTP_AUTHORIZATION header.')
             return self._unauthorized()
 
         if auth_type.lower() != 'basic':
+            logger.info('Authorization type not basic.')
             return self._unauthorized()
 
         user_pass = base64.b64decode(data)
         bits = user_pass.split(':', 1)
 
         if len(bits) != 2:
+            logger.info('Length of bits != 2 in basic auth header.')
             return self._unauthorized()
 
         # Check with LDAP
         try:
-            ldap_server = ldap.initialize('ldaps://directory.uoguelph.ca')
+            ldap_server = ldap.initialize(settings.LDAP_SERVER)
             base_dn = 'uid=%s,ou=People,o=uoguelph.ca' % bits[0]
             ldap_server.simple_bind_s(base_dn, bits[1])
-        except ldap.LDAPError, e:
+        except ldap.LDAPError as e:
+            logger.info('LDAP error: %s' % e)
             return self._unauthorized()
 
         request.user.username = bits[0]
