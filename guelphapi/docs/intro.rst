@@ -1,51 +1,45 @@
-Introduction
-============
+Getting Started with GuelphDev API Service
+==========================================
 
-GuelphAPI allows people to build software utilizing data extracted from the University of Guelph websites.
+GuelphDev API Service allows people to build software utilizing data extracted from the University of Guelph websites.
 The API is mostly read-only but does support some authenticated requests.
 
+.. note::
+
+    If you hit a stumbling block, you can email: npresta@uoguelph.ca
+
+This documentation assumes you have a basic understanding of REST-style APIs.
+
 How to access the API?
-**********************
+----------------------
 
-At the present time, the API is open to everyone, without any sort of API key. This will change in the future.
-To access a resource, browse to:
+The API lives at: https://apiguelph-nickpresta.dotcloud.com/
 
-    http://guelphapis.herokuapp.com/api/v1/
+At the present time, the API requires a username and API key.
+To obtain access, please email: npresta@uoguelph.ca
 
-This will show you a listing of the resources, their schemas, and their endpoints for LIST operations.
+Services Supported
+------------------
 
-Output Formats Supported
-************************
+Currently, GuelpDev API Service supports the following services:
 
-You may append ?format=FORMAT to the end of any URI, where FORMAT is equal to:
+* Courses
 
-* json
-* jsonp
-* xml
-* yaml
+  - University of Guelph undergraduate and graduate courses
+  - Search by course name, filter on attributes
+  - Get description, credit value, semester offered, etc.
 
-For example:
+* Events
 
-    http://guelphapis.herokuapp.com/api/v1/?format=json
+  - Student Affairs Events
+  - Get event date, description, location, etc.
 
-You will get back JSON:
+* News
+* Mealplan (authenticated)
 
-.. code-block:: javascript
+  - Get your meal plan type and balance
 
-    {
-      course: {
-        list_endpoint: "/api/v1/course/",
-        schema: "/api/v1/course/schema/"
-      },
-      news: {
-        list_endpoint: "/api/v1/news/",
-        schema: "/api/v1/news/schema/"
-      }
-    }
+* Schedule (authenticated)
 
-Contact Information
-*******************
+  - Get your current semester schedule
 
-If you have any questions, or suggestions, please email:
-
-  someemail@example.com
