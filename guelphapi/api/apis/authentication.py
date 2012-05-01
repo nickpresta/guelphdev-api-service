@@ -101,4 +101,3 @@ class BasicHttpApiKeyAuthentication(BasicAuthentication):
 
         return True
 
-
