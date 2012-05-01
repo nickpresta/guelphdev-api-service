@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
+from django.views.generic.simple import redirect_to
 
 from tastypie.api import Api
 from api.apis.course import CourseResource
@@ -20,6 +21,7 @@ v1_api.register(MealPlanResource())
 v1_api.register(ScheduleResource())
 
 urlpatterns = patterns('',
+    (r'^$', redirect_to, {'url': settings.READ_THE_DOCS_URL}),
     url(r'^api/', include(v1_api.urls)),
     # Examples:
     # url(r'^$', 'guelphapi.views.home', name='home'),

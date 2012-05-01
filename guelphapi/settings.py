@@ -123,7 +123,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(BASE_DIR, 'templates'),
+    #os.path.join(BASE_DIR, 'templates'),
 )
 
 INSTALLED_APPS = (
@@ -255,6 +255,9 @@ FETCH_SCHEDULE_SCRIPT = os.path.abspath(os.path.join(BASE_DIR, '../utils/scripts
 
 # Ldap settings
 LDAP_SERVER = 'ldaps://directory.uoguelph.ca'
+
+# Read the Docs documentation URL
+READ_THE_DOCS_URL = 'http://guelphdev-api-service.readthedocs.org/en/latest/'
 
 # Try to import our local settings (for database, etc)
 # DO NOT remove this
