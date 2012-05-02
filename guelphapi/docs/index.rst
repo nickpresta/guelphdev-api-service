@@ -3,10 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to GuelphAPI's documentation!
-=====================================
+Welcome to the GuelphDev API Service documentation!
+===================================================
 
-Contents:
+Contents
+--------
 
 .. toctree::
    :maxdepth: 2
@@ -15,9 +16,14 @@ Contents:
    interacting
    resources
 
-Indices and tables
-==================
+Built with
+----------
 
-* :ref:`genindex`
-* :ref:`search`
+`Django-Tastypie <http://tastypieapi.org/>`_
+
+`dotCloud <https://www.dotcloud.com/>`_
+
+.. raw:: html
+
+    <a href="https://mixpanel.com/f/partner"><img src="https://mixpanel.com/site_media/images/partner/badge_light.png" alt="Mobile and Web Analytics" /></a>
 
