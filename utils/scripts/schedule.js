@@ -3,7 +3,7 @@
  *
  * Author: Nick Presta
  * Copyright: Copyright 2012
- * License: GPL
+ * License: MIT
  * Version: 0.0.1
  * Maintainer: Nick Presta
  * Email: nick@nickpresta.ca
